@@ -1,0 +1,46 @@
+{
+  "orders": [
+    {
+      "_id": "57720ae5f3027f03023bb79f",
+      "created_by": "57720a51f3027f03023bb79e",
+      "contactName": "Chuning Liu",
+      "contactNumber": "88880000",
+      "amount": 10,
+      "fromAddress": {
+        "geoLocation": {
+          "lat": 1.29078,
+          "lng": 103.781
+        },
+        "postal": 118425,
+        "street": "27 Prince George's Park",
+        "extra": "Level 4"
+      },
+      "toAddress": {
+        "geoLocation": {
+          "lat": 1.29132,
+          "lng": 103.776
+        },
+        "postal": 119618,
+        "street": "20 Heng Mui Keng Terrace",
+        "extra": "BLK D-203"
+      },
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          103.781,
+          1.29078
+        ]
+      },
+      "recipientName": "Jingwen",
+      "recipientContact": 88880001,
+      "comments": "Confidential",
+      "orderId": "W1467091685372",
+      "__v": 0,
+      "updated_at": "2016-07-04T07:28:48.907Z",
+      "created_at": "2016-06-28T05:28:05.373Z",
+      "status": 1,
+      "orderType": 1,
+      "deliver_by": "57720a51f3027f03023bb79e"
+    }
+  ]
+}

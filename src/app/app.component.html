@@ -1,0 +1,32 @@
+<h1>
+  {{title}}
+</h1>
+
+<nav>
+  <a [routerLink]="['/']">
+    Locate Driver
+  </a> |
+  <a [routerLink]="['/uploadOrders']">
+    Upload Orders
+  </a> |
+  <a [routerLink]="['/assignOrders']">
+    Assign Orders
+  </a> |
+  <a [routerLink]="['/paymentFlow']">
+    Payment Flow
+  </a> |
+  <a [routerLink]="['/management']">
+    Management
+  </a> 
+  <!--<a [routerLink]="['/about']">
+    About
+  </a>
+  |
+	<a [routerLink]="['/github', 'angular']">
+    Github Repos
+  </a>-->
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

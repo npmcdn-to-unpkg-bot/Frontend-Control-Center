@@ -1,0 +1,64 @@
+{{diagnostic}}
+<h3>Please fill in the form below</h3>
+<div  [hidden]="submitted">
+<form *ngIf="active" (ngSubmit)="onSubmit()" #orderForm="ngForm">
+  <div class="form-group">
+    <label for="parcelType">Package Type: </label>
+    <select class="form-control" required [(ngModel)]="newOrder.orderType" name="orderType">
+    <option *ngFor="let t of orderTypes" [value]="t.value">{{t.label}}</option>
+  </select>
+  </div>
+  <div class="form-group">
+    <label for="sendName">Sender Name: </label>
+    <input id="sendName" required type="text" class="form-control" [(ngModel)]="newOrder.contactName" name="contactName"/>
+  </div>
+  <div class="form-group">
+    <label for="sendContact">Sender Contact: </label>
+    <input id="sendContact" required type="text" class="form-control" [(ngModel)]="newOrder.contactNumber"  name="contactNumber"/>
+  </div>
+  <div class="form-group">
+    <label for="recName">Recipient Name: </label>
+    <input id="recName" required type="text" class="form-control" [(ngModel)]="newOrder.recipientName" name="recipientName"/>
+  </div>
+  <div class="form-group">
+    <label for="recContact">Recipient Contact: </label>
+    <input id="recContact" required type="number" class="form-control" [(ngModel)]="newOrder.recipientContact"  name="recipientContact"/>
+  </div>
+  <div class="form-group">
+    <label for="comments">Remarks: </label>
+    <input id="comments" type="text" class="form-control" [(ngModel)]="newOrder.comments" name="comments"/>
+  </div>
+  <label>Pick-up Address: </label>  
+  <div class="form-group">
+    <label for="fromPostal">Postal Code: </label>
+    <input id="fromPostal" required type="number" class="form-control" [(ngModel)]="newOrder.fromAddress.postal" name="fromPostal"/>
+  </div>
+  <div class="form-group">
+    <label for="fromStreet">Street: </label>
+    <input id="fromStreet" type="text" class="form-control" [(ngModel)]="newOrder.fromAddress.street" name="fromStreet"/>
+  </div>
+  <div class="form-group">
+    <label for="fromExtra">Unit/Place: </label>
+    <input id="fromExtra" type="text" class="form-control" placeholder="Optional" [(ngModel)]="newOrder.fromAddress.extra" name="fromExtra"/>
+  </div>
+  <label>Deliver Address: </label>  
+  <div class="form-group">
+    <label for="toPostal">Postal Code: </label>
+    <input id="toPostal" required type="number" class="form-control" [(ngModel)]="newOrder.toAddress.postal" name="toPostal"/>
+  </div>
+  <div class="form-group">
+    <label for="toStreet">Street: </label>
+    <input id="toStreet" type="text" class="form-control" [(ngModel)]="newOrder.toAddress.street" name="toStreet"/>
+  </div>
+  <div class="form-group">
+    <label for="toExtra">Unit/Place: </label>
+    <input id="toExtra" type="text" class="form-control" placeholder="Optional" [(ngModel)]="newOrder.toAddress.extra" name="toExtra"/>
+  </div>
+   <div class="form-group">
+    <label for="fare">Fare: </label>
+    <input id="fare" type="number" required class="form-control" [(ngModel)]="newOrder.amount" name="fare"/>
+  </div>
+  <button type="submit" class="btn btn-default" [disabled]="!orderForm.form.valid">Submit</button>
+  <button type="button" class="btn btn-default" (click)="createNewOrder()">New Order</button>
+</form>
+</div>

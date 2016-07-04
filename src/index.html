@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Welo Control Center</title>
+  <base href="/"> {{#unless environment.production}}
+  <script src="/ember-cli-live-reload.js" type="text/javascript"></script> {{/unless}}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+  <!--Inject External JS libraries-->
+  <script src="vendor/xlsx/dist/xlsx.core.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+
+<body>
+  <div class="container">
+  <app-root>Loading...</app-root>
+
+  {{#each scripts.polyfills}}
+  <script src="{{.}}"></script> {{/each}}
+  <script>
+      System.import('system-config.js').then(function () {
+        System.import('main');
+      }).catch(console.error.bind(console));
+    </script>
+    </div>
+</body>
+
+</html>

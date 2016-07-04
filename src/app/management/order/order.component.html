@@ -1,0 +1,18 @@
+<h3>Orders:</h3>
+<table>
+  <tbody>
+  <tr>
+    <th>ID</th>
+    <th>From</th>
+    <th>To</th>
+    <th>On Date</th>  
+  </tr>
+  <tr *ngFor="let order of orders">
+    <td>{{order.orderId}}</td> 
+    <td>{{order.fromAddress.street}}</td> 
+    <td>{{order.toAddress.street}}</td> 
+    <td>{{order.created_at | date}}</td> 
+  </tr>
+  </tbody>
+</table>
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
