@@ -3,6 +3,7 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { Order } from '../../management/order/order'
+import { MapService } from '../../shared/location-service/MAP.service';
 
 import {
   beforeEach, beforeEachProviders,
@@ -16,7 +17,8 @@ import { SingleOrderInputComponent } from './single-order-input.component';
 describe('Component: SingleOrderInput', () => {
   it('should create an instance', () => {
     let newOrder: Order;
-    let component = new SingleOrderInputComponent(newOrder);
+    let mapService: MapService;
+    let component = new SingleOrderInputComponent(newOrder,mapService);
     expect(component).toBeTruthy();
   });
 });

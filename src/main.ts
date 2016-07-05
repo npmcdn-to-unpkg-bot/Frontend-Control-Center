@@ -1,7 +1,7 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { AppComponent, environment } from './app/';
-import { HTTP_PROVIDERS } from '@angular/http';
+import { HTTP_PROVIDERS, JSONP_PROVIDERS } from '@angular/http';
 // import {enableProdMode} from '@angular/core';
 
 import { APP_ROUTER_PROVIDERS } from './app/app.routes';
@@ -26,9 +26,11 @@ bootstrap(AppComponent, [
     config.apiKey = 'AIzaSyALKC1tljWTKklkQBusA89LXkcu5MxhW68';
     config.apiVersion = "3";
     config.language = "en";
+    config.libraries = ['places']
     return config;
   }}),
   HTTP_PROVIDERS,
+  JSONP_PROVIDERS,
   APP_ROUTER_PROVIDERS,
   { provide: LocationStrategy, useClass: HashLocationStrategy }
 ])

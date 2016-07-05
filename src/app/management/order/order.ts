@@ -13,7 +13,7 @@ export class Location {
 }
 
 @Injectable()
-class Address{
+export class Address{
     constructor(public geoLocation: GeoLocation) {
     }
     postal: number;

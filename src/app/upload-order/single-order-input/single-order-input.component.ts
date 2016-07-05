@@ -1,31 +1,76 @@
 import { Component, OnInit, Injectable, Injector, ReflectiveInjector } from '@angular/core';
-import { Order, FromAddress, ToAddress, GeoLocation, Location } from '../../management/order/order'
+import { Jsonp, URLSearchParams } from '@angular/http';
+import { Order, Address, FromAddress, ToAddress, GeoLocation, Location } from '../../management/order/order'
 import { NgForm } from '@angular/common';
+import { MapService } from '../../shared/location-service/map.service';
 
 @Component({
   moduleId: module.id,
   selector: 'app-single-order-input',
   templateUrl: 'single-order-input.component.html',
   styleUrls: ['single-order-input.component.css'],
-  providers: [Order, FromAddress, ToAddress, GeoLocation, Location]
+  providers: [Order, FromAddress, ToAddress, GeoLocation, Location, MapService]
 })
 
 export class SingleOrderInputComponent implements OnInit {
-  // define explicit injector to inject dependencies used here
+  // define explicit injector to inject dependencies used in the class
   private injector: Injector = ReflectiveInjector.resolveAndCreate([Order, FromAddress, ToAddress, GeoLocation, Location]);
 
-  constructor(public newOrder: Order) {
+  constructor(public newOrder: Order, private mapService: MapService) {
     this.newOrder.orderType = 1;
   }
   ngOnInit() { }
 
   submitted = false;
   active = true;
-  onSubmit() { 
+
+  onSubmit() {
     // parse order type to number (get string value from select)
     let type = this.newOrder.orderType;
     this.newOrder.orderType = this.toDigit(type);
-    this.submitted = true; 
+    this.submitted = true;
+  }
+
+  streetAutoComplete(id: string) {
+    this.mapService.streetAutoComplete(id, callback => {
+      if (callback.code === 200) {
+        var address = new Address(new GeoLocation())
+        address.geoLocation.lat = callback.geolocation.lat;
+        address.geoLocation.lng = callback.geolocation.lng;
+        address.postal = callback.postal;
+        switch (id) {
+          case 'fromStreet':
+            address.street = this.newOrder.fromAddress.street;
+            this.newOrder.fromAddress = address;
+            this.newOrder.location.coordinates = [address.geoLocation.lat, address.geoLocation.lng];
+            this.newOrder.location.type = 'Point'; break;
+          case 'toStreet':
+            address.street = this.newOrder.toAddress.street;
+            this.newOrder.toAddress = address; break;
+          default:
+        }
+      }
+    });
+  }
+
+  geocodingByPostal(id: string, postal: number) {
+    this.mapService.getGeoDataForPostalCode(postal, (callback) => {
+      if (callback.code === 200) {
+        var address = new Address(new GeoLocation())
+        address.geoLocation.lat = callback.geolocation.lat;
+        address.geoLocation.lng = callback.geolocation.lng;
+        address.street = callback.address;
+        address.postal = postal;
+        switch (id) {
+          case 'fromPostal':
+            this.newOrder.fromAddress = address;
+            this.newOrder.location.coordinates = [address.geoLocation.lat, address.geoLocation.lng];
+            this.newOrder.location.type = 'Point'; break;
+          case 'toPostal': this.newOrder.toAddress = address; break;
+          default:
+        }
+      }
+    })
   }
 
   createNewOrder() {
@@ -33,11 +78,6 @@ export class SingleOrderInputComponent implements OnInit {
     this.constructor(this.injector.get(Order));
     this.active = false;
     setTimeout(() => this.active = true, 0);
-  }
-
-  // TODO: Remove this when we're done
-  get diagnostic() { 
-    return JSON.stringify(this.newOrder); 
   }
 
   // helper function
@@ -51,22 +91,7 @@ export class SingleOrderInputComponent implements OnInit {
 
   // define order types for dropdown list
   orderTypes = [
-    {
-      "label": "Document",
-      "value": 0
-    },
-    {
-      "label": "Small Parcel",
-      "value": 1
-    },
-    {
-      "label": "Medium Parcel",
-      "value": 2
-    },
-    {
-      "label": "Large Parcel",
-      "value": 3
-    }
-  ]
+    { "label": "Document", "value": 0 }, { "label": "Small Parcel", "value": 1 },
+    { "label": "Medium Parcel", "value": 2 }, { "label": "Large Parcel", "value": 3 }]
 
 }
