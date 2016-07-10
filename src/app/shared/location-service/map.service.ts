@@ -12,7 +12,7 @@ export class MapService {
   getGeoDataForPostalCode(postalCode, callback) {
     var search = new URLSearchParams();
     search.set('output', 'json');
-    search.set('q', postalCode);
+    search.set('q', this.pad(postalCode, 6));
     search.set('client', '');
     search.set('sensor', 'false');
 
@@ -20,7 +20,6 @@ export class MapService {
     this.jsonp.get(
       'http://gothere.sg/maps/geo?callback=JSONP_CALLBACK', { search }
     ).map((response) => response.json()).subscribe(data => {
-      console.log(data);
       if (data.Status.code === 200) {
         callback({
           code: 200,
@@ -73,4 +72,8 @@ export class MapService {
     });
   }
 
+  private pad(num, size) {
+    var s = "00000000" + num;
+    return s.substr(s.length - size);
+  }
 }
