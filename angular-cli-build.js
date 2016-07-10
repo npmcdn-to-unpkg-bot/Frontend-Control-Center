@@ -17,6 +17,7 @@ module.exports = function(defaults) {
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
       'xlsx/**/*.+(js|js.map)',
+      'file-saver/**/*.+(js|js.map)',      
       'bootstrap/**/*.+(js|js.map|css|less)'
     ]
   });

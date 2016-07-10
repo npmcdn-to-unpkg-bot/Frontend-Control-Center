@@ -27,12 +27,13 @@ export class SingleOrderInputComponent implements OnInit {
   onSubmit() {
     // parse order type to number (get string value from select)
     let type = this.newOrder.orderType;
-    this.newOrder.orderType = this.toDigit(type);
+    this.newOrder.orderType = parseInt(type+'');
     this.submitted = true;
   }
 
   streetAutoComplete(id: string) {
     this.mapService.streetAutoComplete(id, callback => {
+      // callback for address geocoding
       if (callback.code === 200) {
         var address = new Address(new GeoLocation())
         address.geoLocation.lat = callback.geolocation.lat;
@@ -78,15 +79,6 @@ export class SingleOrderInputComponent implements OnInit {
     this.constructor(this.injector.get(Order));
     this.active = false;
     setTimeout(() => this.active = true, 0);
-  }
-
-  // helper function
-  private toDigit(value: any) {
-    if (typeof value === 'string') {
-      return parseInt(value);
-    } else {
-      return value;
-    }
   }
 
   // define order types for dropdown list
