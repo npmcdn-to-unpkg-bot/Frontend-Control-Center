@@ -42,11 +42,22 @@ export class FileService {
     let temp = [];
     let faultyEntries = [];
 
+    // 0. Add excel row number to data
+    for (var i = 0; i < data.length; i++) {
+      data[i]["EXCEL_ROW"] = i + 2;
+    }
     // 1. Check if columns are the same as template and required fields are filled    
     for (let i in template) {
       temp = data.filter((item) => template[i].required && item[template[i].column] === undefined);
-      if (temp.length > 0) for (let j in temp) faultyEntries.push(temp[j]);
+      if (temp.length > 0) {
+        for (let j in temp) {
+          temp[j]["DETAIL"] = (temp[j]["DETAIL"] === undefined) ? (template[i].column + " is required") : (temp[j]["DETAIL"] + "; " + template[i].column + " is required");
+          faultyEntries.push(temp[j]);
+        }
+      }
     }
+    faultyEntries = this.removeDuplicates(faultyEntries);
+
     if (faultyEntries.length === 0) {
       // 2a. Once all data are successfully entered then format the orders in the right data type    
       callback({
@@ -58,9 +69,18 @@ export class FileService {
       console.log(faultyEntries);
       callback({
         code: 400,
+        message: "Please check your excel file and complete all required entries before upload.",
         data: faultyEntries
       })
     }
+  }
+
+  private removeDuplicates(entries) {
+    var uniqueEntries = [];
+    $.each(entries, function (i, el) {
+      if ($.inArray(el, uniqueEntries) === -1) uniqueEntries.push(el);
+    });
+    return uniqueEntries;
   }
 
   private formatObjects(data) {
@@ -138,12 +158,12 @@ export class FileService {
 
     // TODO: construct a workbook 
     /* dummy workbook constructor */
-    function Workbook() {
-      if (!(this instanceof Workbook)) return new Workbook();
-      this.SheetNames = [];
-      this.Sheets = {};
-    }
-    var wb = Workbook();
+    // function Workbook() {
+    //   if (!(this instanceof Workbook)) return new Workbook();
+    //   this.SheetNames = [];
+    //   this.Sheets = {};
+    // }
+    var wb: any;
 
     /* TEST: add worksheet to workbook */
     wb.SheetNames.push(ws_name);
@@ -191,5 +211,5 @@ export class FileService {
     /* TEST: proper range */
     if (range.s.c < 10000000) ws['!ref'] = XLSX.utils.encode_range(range);
     return ws;
-  }  
+  }
 }

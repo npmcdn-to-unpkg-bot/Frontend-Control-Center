@@ -1,24 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { FileService } from '../../shared/file-service/file.service';
 import { MapService } from '../../shared/location-service/map.service';
+import { OrderService } from '../../management/order/order.service';
 import { Order, Address, GeoLocation, Location } from '../../management/order/order'
+
 
 @Component({
   moduleId: module.id,
   selector: 'app-batch-order-upload',
   templateUrl: 'batch-order-upload.component.html',
   styleUrls: ['batch-order-upload.component.css'],
-  providers: [FileService, MapService]
+  providers: [FileService, MapService, OrderService]
 })
 export class BatchOrderUploadComponent implements OnInit {
 
-  constructor(private fileService: FileService, private mapService: MapService) { }
+  constructor(private fileService: FileService, private mapService: MapService, private orderService: OrderService) { }
   ngOnInit() {
   }
 
-  displayData: any;
+  orders: Order[];
+  faultyEntries: any[];
+  submitted: boolean = false;
+  isDisabled: boolean = true;
+  message: string = ""
+
+  onSubmit() {
+    this.orderService.uploadOrders(this.orders);
+    this.submitted = true;
+  }
 
   uploadExcel(oEvent) {
+    // clear previous data
+    this.orders = undefined;
+    this.faultyEntries = undefined;
+    // process file and get orders data or faulty entries
     this.fileService.uploadFile(oEvent, data => {
       this.fileService.processFileData(data, callback => {
         if (callback.code == 200) {
@@ -26,18 +41,21 @@ export class BatchOrderUploadComponent implements OnInit {
           for (let i in orders) {
             this.geocodeAddrByPostal(orders[i].fromAddress.postal, (address) => {
               orders[i].fromAddress = address;
-              orders[i].location.coordinates = [address.geoLocation.lat, address.geoLocation.lng];
+              orders[i].location.coordinates = [address.geoLocation.lng, address.geoLocation.lat];
               orders[i].location.type = 'Point';
             });
             this.geocodeAddrByPostal(orders[i].toAddress.postal, (address) => {
               orders[i].toAddress = address;
             });
           }
+          setTimeout(() => this.isDisabled = false, 3000);
+          this.orders = orders;
         } else {
           // TODO: display a dialog to show faulty entries
+          this.faultyEntries = callback.data;
+          this.message = callback.message;
+          console.log(callback.data);
         }
-        console.log(callback.data);
-        this.displayData = callback.data;
       })
       for (var object in data) {
       }
@@ -58,11 +76,11 @@ export class BatchOrderUploadComponent implements OnInit {
   }
 
   // TODO: delete after complete the function
-  get diagnose(){
-      return JSON.stringify(this.displayData);
-  }
+  // get diagnose() {
+  //   return JSON.stringify(this.orders);
+  // }
 
-  downloadTemplate(){
+  downloadTemplate() {
     this.fileService.downloadFileTemplate();
   }
 }

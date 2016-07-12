@@ -3,20 +3,21 @@ import { Jsonp, URLSearchParams } from '@angular/http';
 import { Order, Address, FromAddress, ToAddress, GeoLocation, Location } from '../../management/order/order'
 import { NgForm } from '@angular/common';
 import { MapService } from '../../shared/location-service/map.service';
+import { OrderService } from '../../management/order/order.service';
 
 @Component({
   moduleId: module.id,
   selector: 'app-single-order-input',
   templateUrl: 'single-order-input.component.html',
   styleUrls: ['single-order-input.component.css'],
-  providers: [Order, FromAddress, ToAddress, GeoLocation, Location, MapService]
+  providers: [Order, FromAddress, ToAddress, GeoLocation, Location, MapService, OrderService]
 })
 
 export class SingleOrderInputComponent implements OnInit {
   // define explicit injector to inject dependencies used in the class
   private injector: Injector = ReflectiveInjector.resolveAndCreate([Order, FromAddress, ToAddress, GeoLocation, Location]);
 
-  constructor(public newOrder: Order, private mapService: MapService) {
+  constructor(public newOrder: Order, private mapService: MapService, private orderService: OrderService) {
     this.newOrder.orderType = 1;
   }
   ngOnInit() { }
@@ -28,7 +29,10 @@ export class SingleOrderInputComponent implements OnInit {
     // parse order type to number (get string value from select)
     let type = this.newOrder.orderType;
     this.newOrder.orderType = parseInt(type+'');
+    this.orderService.createOrder(this.newOrder);    
     this.submitted = true;
+    setTimeout(() => this.submitted = false, 1000);
+    this.createNewOrder();
   }
 
   streetAutoComplete(id: string) {
@@ -43,7 +47,7 @@ export class SingleOrderInputComponent implements OnInit {
           case 'fromStreet':
             address.street = this.newOrder.fromAddress.street;
             this.newOrder.fromAddress = address;
-            this.newOrder.location.coordinates = [address.geoLocation.lat, address.geoLocation.lng];
+            this.newOrder.location.coordinates = [address.geoLocation.lng, address.geoLocation.lat];
             this.newOrder.location.type = 'Point'; break;
           case 'toStreet':
             address.street = this.newOrder.toAddress.street;
@@ -65,7 +69,7 @@ export class SingleOrderInputComponent implements OnInit {
         switch (id) {
           case 'fromPostal':
             this.newOrder.fromAddress = address;
-            this.newOrder.location.coordinates = [address.geoLocation.lat, address.geoLocation.lng];
+            this.newOrder.location.coordinates = [address.geoLocation.lng, address.geoLocation.lat];
             this.newOrder.location.type = 'Point'; break;
           case 'toPostal': this.newOrder.toAddress = address; break;
           default:

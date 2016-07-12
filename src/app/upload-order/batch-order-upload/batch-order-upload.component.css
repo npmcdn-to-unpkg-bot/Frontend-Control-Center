@@ -1,0 +1,14 @@
+.thead-inverse th{
+    color: #fff;
+    background-color: #373a3c;
+}
+
+.output-table{
+    overflow: auto;
+    max-height: 400px;
+}
+
+hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

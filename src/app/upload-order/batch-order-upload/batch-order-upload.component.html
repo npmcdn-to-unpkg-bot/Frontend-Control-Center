@@ -1,7 +1,72 @@
-<br/>
-<label class="btn btn-default btn-file">
-  Browse <input type="file" id="my_file_input" (change)="uploadExcel($event)" style="display: none;"/>
-</label>
-<button class="btn btn-default" (click)="downloadTemplate()">Download</button>
+<div>
+  <label class="btn btn-primary btn-file">
+  Browse File <input type="file" id="my_file_input" (change)="uploadExcel($event)" style="display: none;"/>
+  </label>
+  <button class="btn btn-default" (click)="downloadTemplate()">Download Template</button>
+</div>
 
-<p>{{diagnose}}</p>
+<!--<p>{{diagnose}}</p>-->
+<hr>
+<div id="orders" *ngIf="orders">
+  <form (ngSubmit)="onSubmit()">
+    <div class="output-table">
+      <table class="table table-sm table-hover">
+        <thead class="thead-inverse">
+          <tr>
+            <th>#</th>
+            <th>Type</th>
+            <th>Sender</th>
+            <th>Sender Contact</th>
+            <th>Recipient</th>
+            <th>Recipient Contact</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Fare</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let order of orders; let i = index">
+          <tr [ngSwitch]="order.orderType">
+            <th scope="row">{{i + 1}}</th>
+            <td *ngSwitchCase="0">Document</td>
+            <td *ngSwitchCase="1">Small</td>
+            <td *ngSwitchCase="2">Medium</td>
+            <td *ngSwitchCase="3">Large</td>
+            <td>{{order.contactName}}</td>
+            <td>{{order.contactNumber}}</td>
+            <td>{{order.recipientName}}</td>
+            <td>{{order.recipientContact}}</td>
+            <td>{{order.fromAddress.extra ? order.fromAddress.extra : "" + " " + order.fromAddress.street + ", " + order.fromAddress.postal}}</td>
+            <td>{{order.toAddress.extra ? order.toAddress.extra : "" + " " + order.toAddress.street + ", " + order.toAddress.postal}}</td>
+            <td>{{order.amount}}</td>
+            <td>{{order.comments}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr>
+    <button type="submit" class="btn btn-primary" [disabled]="isDisabled" style="float: right">Submit</button>
+  </form>
+</div>
+
+<div id="faultyEntries" *ngIf="faultyEntries">
+  <div class="alert alert-danger">
+    <p>{{ message }}</p>
+  </div>
+  <div class="output-table">
+    <table class="table table-sm table-hover">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Excel Row #</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let entry of faultyEntries">
+        <tr>
+          <th scope="row">{{entry.EXCEL_ROW}}</th>
+          <td>{{entry.DETAIL}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
