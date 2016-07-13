@@ -2,9 +2,9 @@
 
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { Order } from '../../management/order/order'
+import { Order } from '../../shared/order-service/order'
 import { MapService } from '../../shared/location-service/MAP.service';
-import { OrderService } from '../../management/order/order.service';
+import { OrderService } from '../../shared/order-service/order.service';
 
 import {
   beforeEach, beforeEachProviders,

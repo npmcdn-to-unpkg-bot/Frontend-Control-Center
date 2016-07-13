@@ -11,7 +11,7 @@ export class OrderService {
 
   // GET orders
   getOrders(): Observable<Order[]> {
-    let getOrdersUrl = 'app/management/order/orders.json';
+    let getOrdersUrl = 'app/shared/order-service/orders.json';
     return this.http.get(getOrdersUrl).map(this.extractData).catch(this.handleError);
   }
 

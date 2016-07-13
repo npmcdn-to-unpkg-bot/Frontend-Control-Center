@@ -1,5 +1,5 @@
 import { Injectable, Injector, ReflectiveInjector } from '@angular/core';
-import { Order, Address, FromAddress, ToAddress, GeoLocation, Location } from '../../management/order/order'
+import { Order, Address, FromAddress, ToAddress, GeoLocation, Location } from '../../shared/order-service/order'
 
 declare var XLSX: any;
 declare var $: any;

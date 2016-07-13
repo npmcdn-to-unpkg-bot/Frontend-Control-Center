@@ -11,7 +11,7 @@ import {
 } from '@angular/core/testing';
 
 import { DriverComponent } from './driver.component';
-import { DriverService } from './driver.service';
+import { DriverService } from '../../shared/driver-service/driver.service'
 
 describe('Component: Driver', () => {
   it('should create an instance', () => {

@@ -4,7 +4,7 @@ import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FileService } from '../../shared/file-service/file.service';
 import { MapService } from '../../shared/location-service/map.service';
-import { OrderService } from '../../management/order/order.service';
+import { OrderService } from '../../shared/order-service/order.service';
 
 import {
   beforeEach, beforeEachProviders,

@@ -1,9 +1,9 @@
 import { Component, OnInit, Injectable, Injector, ReflectiveInjector } from '@angular/core';
 import { Jsonp, URLSearchParams } from '@angular/http';
-import { Order, Address, FromAddress, ToAddress, GeoLocation, Location } from '../../management/order/order'
+import { Order, Address, FromAddress, ToAddress, GeoLocation, Location } from '../../shared/order-service/order'
 import { NgForm } from '@angular/common';
 import { MapService } from '../../shared/location-service/map.service';
-import { OrderService } from '../../management/order/order.service';
+import { OrderService } from '../../shared/order-service/order.service';
 
 @Component({
   moduleId: module.id,

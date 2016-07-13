@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FileService } from '../../shared/file-service/file.service';
 import { MapService } from '../../shared/location-service/map.service';
-import { OrderService } from '../../management/order/order.service';
-import { Order, Address, GeoLocation, Location } from '../../management/order/order'
+import { OrderService } from '../../shared/order-service/order.service';
+import { Order, Address, GeoLocation, Location } from '../../shared/order-service/order'
 
 
 @Component({
@@ -27,6 +27,10 @@ export class BatchOrderUploadComponent implements OnInit {
   onSubmit() {
     this.orderService.uploadOrders(this.orders);
     this.submitted = true;
+  }
+
+  clearValue(e: any) {
+    e.value = '';
   }
 
   uploadExcel(oEvent) {

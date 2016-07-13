@@ -11,7 +11,7 @@ import {
 } from '@angular/core/testing';
 
 import { OrderComponent } from './order.component';
-import { OrderService } from './order.service';
+import { OrderService } from '../../shared/order-service/order.service'
 
 describe('Component: Order', () => {
   it('should create an instance', () => {

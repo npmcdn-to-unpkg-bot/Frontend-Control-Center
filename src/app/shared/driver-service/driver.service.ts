@@ -8,7 +8,7 @@ export class DriverService {
 
   constructor(private http: Http) { }
 
-  private driversUrl = 'app/management/driver/drivers.json'; //url to web API
+  private driversUrl = 'app/shared/driver-service/drivers.json'; //url to web API
   
   getDrivers(): Observable<Driver[]>{
     return this.http.get(this.driversUrl).map(this.extractData).catch(this.handleError);

@@ -1,6 +1,6 @@
 <div>
   <label class="btn btn-primary btn-file">
-  Browse File <input type="file" id="my_file_input" (change)="uploadExcel($event)" style="display: none;"/>
+  Browse File <input type="file" id="my_file_input" #fileUploader (click)="clearValue(fileUploader)" (change)="uploadExcel($event)" style="display: none;"/>
   </label>
   <button class="btn btn-default" (click)="downloadTemplate()">Download Template</button>
 </div>
