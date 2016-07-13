@@ -1,46 +1,399 @@
-{
-  "orders": [
-    {
-      "_id": "57720ae5f3027f03023bb79f",
-      "created_by": "57720a51f3027f03023bb79e",
-      "contactName": "Chuning Liu",
-      "contactNumber": "88880000",
-      "amount": 10,
-      "fromAddress": {
-        "geoLocation": {
-          "lat": 1.29078,
-          "lng": 103.781
-        },
-        "postal": 118425,
-        "street": "27 Prince George's Park",
-        "extra": "Level 4"
+{  
+   "orders":[  
+      {  
+         "_id":"57720ae5f3027f03023bb79f",
+         "created_by":"57720a51f3027f03023bb79e",
+         "contactName":"Chuning Liu",
+         "contactNumber":"88880000",
+         "amount":10,
+         "fromAddress":{  
+            "geoLocation":{  
+               "lat":1.29078,
+               "lng":103.781
+            },
+            "postal":118425,
+            "street":"27 Prince George's Park",
+            "extra":"Level 4"
+         },
+         "toAddress":{  
+            "geoLocation":{  
+               "lat":1.29132,
+               "lng":103.776
+            },
+            "postal":119618,
+            "street":"20 Heng Mui Keng Terrace",
+            "extra":"BLK D-203"
+         },
+         "location":{  
+            "type":"Point",
+            "coordinates":[  
+               103.781,
+               1.29078
+            ]
+         },
+         "recipientName":"Jingwen",
+         "recipientContact":88880001,
+         "comments":"Confidential",
+         "orderId":"W1467091685372",
+         "__v":0,
+         "updated_at":"2016-07-04T07:28:48.907Z",
+         "paid":false,
+         "released_to_driver":false,
+         "created_at":"2016-06-28T05:28:05.373Z",
+         "status":1,
+         "orderType":1,
+         "deliver_by":"57720a51f3027f03023bb79e"
       },
-      "toAddress": {
-        "geoLocation": {
-          "lat": 1.29132,
-          "lng": 103.776
-        },
-        "postal": 119618,
-        "street": "20 Heng Mui Keng Terrace",
-        "extra": "BLK D-203"
+      {  
+         "_id":"577a27af22b118240d3bc204",
+         "created_by":"57720a51f3027f03023bb79e",
+         "contactName":"Chuning Liu",
+         "contactNumber":"88880000",
+         "amount":80,
+         "fromAddress":{  
+            "geoLocation":{  
+               "lat":1.2807,
+               "lng":103.787
+            },
+            "postal":119118,
+            "street":"39 Lorong Sari",
+            "extra":""
+         },
+         "toAddress":{  
+            "geoLocation":{  
+               "lat":1.29152,
+               "lng":103.78
+            },
+            "postal":118426,
+            "street":"29 Prince George's Park",
+            "extra":""
+         },
+         "location":{  
+            "type":"Point",
+            "coordinates":[  
+               103.787,
+               1.2807
+            ]
+         },
+         "recipientName":"Sun Jingwen",
+         "recipientContact":11110000,
+         "comments":"A lion",
+         "orderId":"W1467623343742",
+         "__v":0,
+         "updated_at":"2016-07-04T09:11:23.468Z",
+         "paid":false,
+         "released_to_driver":false,
+         "created_at":"2016-07-04T09:09:03.742Z",
+         "status":0,
+         "orderType":3,
+         "deliver_by":"576f922a6c5d907737adfb1e"
       },
-      "location": {
-        "type": "Point",
-        "coordinates": [
-          103.781,
-          1.29078
-        ]
+      {  
+         "_id":"577a2a5822b118240d3bc205",
+         "created_by":"57720a51f3027f03023bb79e",
+         "contactName":"Chuning Liu",
+         "contactNumber":"88880000",
+         "amount":10,
+         "fromAddress":{  
+            "geoLocation":{  
+               "lat":1.29046,
+               "lng":103.781
+            },
+            "postal":118427,
+            "street":"31 Prince George's Park",
+            "extra":""
+         },
+         "toAddress":{  
+            "geoLocation":{  
+               "lat":1.29363,
+               "lng":103.77
+            },
+            "postal":119242,
+            "street":"10 Kent Ridge Drive",
+            "extra":""
+         },
+         "location":{  
+            "type":"Point",
+            "coordinates":[  
+               103.781,
+               1.29046
+            ]
+         },
+         "recipientName":"Liu Xin",
+         "recipientContact":12344321,
+         "comments":"offer",
+         "orderId":"W1467624024644",
+         "__v":0,
+         "updated_at":"2016-07-04T09:25:19.202Z",
+         "paid":false,
+         "released_to_driver":false,
+         "created_at":"2016-07-04T09:20:24.644Z",
+         "status":0,
+         "orderType":0,
+         "deliver_by":"576f8d7ff8c170963574d043"
       },
-      "recipientName": "Jingwen",
-      "recipientContact": 88880001,
-      "comments": "Confidential",
-      "orderId": "W1467091685372",
-      "__v": 0,
-      "updated_at": "2016-07-04T07:28:48.907Z",
-      "created_at": "2016-06-28T05:28:05.373Z",
-      "status": 1,
-      "orderType": 1,
-      "deliver_by": "57720a51f3027f03023bb79e"
-    }
-  ]
+      {  
+         "_id":"577a2b2322b118240d3bc206",
+         "created_by":"57720a51f3027f03023bb79e",
+         "contactName":"Chuning Liu",
+         "contactNumber":"88880000",
+         "amount":18,
+         "fromAddress":{  
+            "geoLocation":{  
+               "lat":1.29041,
+               "lng":103.782
+            },
+            "postal":118424,
+            "street":"25 Prince George's Park",
+            "extra":""
+         },
+         "toAddress":{  
+            "geoLocation":{  
+               "lat":1.2738,
+               "lng":103.795
+            },
+            "postal":119430,
+            "street":"29 Jalan Pelepah",
+            "extra":""
+         },
+         "location":{  
+            "type":"Point",
+            "coordinates":[  
+               103.782,
+               1.29041
+            ]
+         },
+         "recipientName":"Jackson Yi",
+         "recipientContact":10010010,
+         "comments":"Sent with love",
+         "orderId":"W1467624227080",
+         "__v":0,
+         "updated_at":"2016-07-04T09:25:19.203Z",
+         "paid":false,
+         "released_to_driver":false,
+         "created_at":"2016-07-04T09:23:47.080Z",
+         "status":0,
+         "orderType":2,
+         "deliver_by":"576f8d7ff8c170963574d043"
+      },
+      {  
+         "_id":"57849917cb22ae4a0237830a",
+         "created_by":"57720a51f3027f03023bb79e",
+         "contactName":"Chuning Liu",
+         "contactNumber":"88880000",
+         "amount":20,
+         "fromAddress":{  
+            "geoLocation":{  
+               "lat":1.29132,
+               "lng":103.776
+            },
+            "postal":119618,
+            "street":"20 Heng Mui Keng Terrace",
+            "extra":""
+         },
+         "toAddress":{  
+            "geoLocation":{  
+               "lat":1.29495,
+               "lng":103.774
+            },
+            "postal":117417,
+            "street":"13 Computing Drive",
+            "extra":""
+         },
+         "location":{  
+            "type":"Point",
+            "coordinates":[  
+               103.776,
+               1.29132
+            ]
+         },
+         "recipientName":"Liu Xu",
+         "recipientContact":88888888,
+         "comments":"",
+         "orderId":"W1468307735710",
+         "__v":0,
+         "updated_at":"2016-07-12T07:15:35.712Z",
+         "paid":false,
+         "released_to_driver":false,
+         "created_at":"2016-07-12T07:15:35.711Z",
+         "status":0,
+         "orderType":1,
+         "deliver_by":null
+      },
+      {  
+         "_id":"57849a8ebd6db1640243ba9b",
+         "created_by":"57720a51f3027f03023bb79e",
+         "contactName":"Chuning Liu",
+         "contactNumber":"88880000",
+         "amount":10,
+         "fromAddress":{  
+            "geoLocation":{  
+               "lat":1.29132,
+               "lng":103.776
+            },
+            "postal":119618,
+            "street":"20 Heng Mui Keng Terrace",
+            "extra":""
+         },
+         "toAddress":{  
+            "geoLocation":{  
+               "lat":1.29495,
+               "lng":103.774
+            },
+            "postal":117417,
+            "street":"13 Computing Drive",
+            "extra":""
+         },
+         "location":{  
+            "type":"Point",
+            "coordinates":[  
+               103.776,
+               1.29132
+            ]
+         },
+         "recipientName":"Weiming",
+         "recipientContact":88888888,
+         "comments":"",
+         "orderId":"W1468308110594",
+         "__v":0,
+         "updated_at":"2016-07-12T07:21:50.596Z",
+         "paid":false,
+         "released_to_driver":false,
+         "created_at":"2016-07-12T07:21:50.596Z",
+         "status":0,
+         "orderType":1,
+         "deliver_by":null
+      },
+      {  
+         "_id":"57849c5bbd6db1640243ba9d",
+         "created_by":"57720a51f3027f03023bb79e",
+         "contactName":"Chuning Liu",
+         "contactNumber":"88880000",
+         "amount":3,
+         "location":{  
+            "type":"Point",
+            "coordinates":[  
+               103.776,
+               1.29132
+            ]
+         },
+         "toAddress":{  
+            "geoLocation":{  
+               "lat":1.29495,
+               "lng":103.774
+            },
+            "postal":117417,
+            "street":"13 Computing Drive",
+            "extra":""
+         },
+         "fromAddress":{  
+            "geoLocation":{  
+               "lat":1.29132,
+               "lng":103.776
+            },
+            "postal":119618,
+            "street":"20 Heng Mui Keng Terrace",
+            "extra":""
+         },
+         "recipientName":"Li Xin",
+         "recipientContact":88880002,
+         "comments":"Confidential",
+         "orderId":"W1468308571508",
+         "__v":0,
+         "updated_at":"2016-07-12T07:29:31.508Z",
+         "paid":false,
+         "released_to_driver":false,
+         "created_at":"2016-07-12T07:29:31.508Z",
+         "status":0,
+         "orderType":1,
+         "deliver_by":null
+      },
+      {  
+         "_id":"5784a328cd25fabc02c09121",
+         "contactName":"Chuning Liu",
+         "contactNumber":"88880000",
+         "amount":3,
+         "location":{  
+            "type":"Point",
+            "coordinates":[  
+               103.776,
+               1.29132
+            ]
+         },
+         "toAddress":{  
+            "geoLocation":{  
+               "lat":1.29495,
+               "lng":103.774
+            },
+            "postal":117417,
+            "street":"13 Computing Drive",
+            "extra":""
+         },
+         "fromAddress":{  
+            "geoLocation":{  
+               "lat":1.29132,
+               "lng":103.776
+            },
+            "postal":119618,
+            "street":"20 Heng Mui Keng Terrace",
+            "extra":""
+         },
+         "recipientName":"Bai Xin",
+         "recipientContact":88880005,
+         "orderId":"W1468310312211",
+         "created_by":"57720a51f3027f03023bb79e",
+         "__v":0,
+         "updated_at":"2016-07-12T07:58:32.216Z",
+         "paid":false,
+         "released_to_driver":false,
+         "created_at":"2016-07-12T07:58:32.215Z",
+         "status":0,
+         "orderType":1,
+         "deliver_by":null
+      },
+      {  
+         "_id":"5784a328cd25fabc02c09122",
+         "contactName":"Chuning Liu",
+         "contactNumber":"88880000",
+         "amount":3,
+         "location":{  
+            "type":"Point",
+            "coordinates":[  
+               103.776,
+               1.29132
+            ]
+         },
+         "toAddress":{  
+            "geoLocation":{  
+               "lat":1.29495,
+               "lng":103.774
+            },
+            "postal":117417,
+            "street":"13 Computing Drive",
+            "extra":""
+         },
+         "fromAddress":{  
+            "geoLocation":{  
+               "lat":1.29132,
+               "lng":103.776
+            },
+            "postal":119618,
+            "street":"20 Heng Mui Keng Terrace",
+            "extra":""
+         },
+         "recipientName":"Sun Xin",
+         "recipientContact":88880000,
+         "comments":"Confidential",
+         "orderId":"W1468310312212",
+         "created_by":"57720a51f3027f03023bb79e",
+         "__v":0,
+         "updated_at":"2016-07-12T07:58:32.227Z",
+         "paid":false,
+         "released_to_driver":false,
+         "created_at":"2016-07-12T07:58:32.227Z",
+         "status":0,
+         "orderType":1,
+         "deliver_by":null
+      }
+   ]
 }

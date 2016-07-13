@@ -2,6 +2,7 @@
 
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { OrderService, DriverService } from '../shared/index';
 
 import {
   beforeEach, beforeEachProviders,
@@ -14,7 +15,9 @@ import { AssignOrderComponent } from './assign-order.component';
 
 describe('Component: AssignOrder', () => {
   it('should create an instance', () => {
-    let component = new AssignOrderComponent();
+    let orderService: OrderService;
+    let driverService: DriverService;
+    let component = new AssignOrderComponent(orderService,driverService);
     expect(component).toBeTruthy();
   });
 });

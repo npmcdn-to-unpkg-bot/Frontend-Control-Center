@@ -17,7 +17,7 @@ export class DriverService {
   private extractData(res: Response) {
     let body = res.json();
     // depends on what is the response from the remote server, change 'data' to the specific JSON tag
-    return body.data || { };
+    return body.drivers || { };
   }
 
   private handleError (error: any) {
@@ -28,5 +28,4 @@ export class DriverService {
     console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
   }
-
 }

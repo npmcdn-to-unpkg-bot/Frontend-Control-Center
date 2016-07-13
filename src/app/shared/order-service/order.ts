@@ -43,11 +43,12 @@ export class Order {
     recipientContact: number;
     comments: string;
     orderId: string;
-    __v: number;
     updated_at: string;
     created_at: string;
     status: number;
     orderType: number;
     deliver_by: string;
+    released_to_driver: boolean;
+    paid: boolean;
 }
 

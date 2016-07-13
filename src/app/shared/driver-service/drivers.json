@@ -1,20 +1,30 @@
-{
-  "data": [
-    {
-      "id": "1",
-      "name": "Peter"
-    },
-    {
-      "id": "2",
-      "name": "Jason"
-    },
-    {
-      "id": "3",
-      "name": "Eric"
-    },
-    {
-      "id": "4",
-      "name": "John"
-    }
-  ]
+{  
+   "drivers":[  
+      {  
+         "_id":"576f8d7ff8c170963574d043",
+         "email":"test1@gmail.com",
+         "name":"Test Driver",
+         "password": null,
+         "phone":8888888,
+         "isDriver":true,
+         "__v":null,
+         "drivingLicense":"S1234567",
+         "vehiceNumber":"SBA123A",
+         "ic":"G1234567A",
+         "creditCard":null
+      },
+      {  
+         "_id":"576f922a6c5d907737adfb1e",
+         "email":"test2@gmail.com",
+         "name":"Liu Xin",
+         "password": null,
+         "phone":88888888,
+         "isDriver":true,
+         "__v":null,
+         "drivingLicense":"S1234567",
+         "vehiceNumber":"SBA123A",
+         "ic":"G1234567A",
+         "creditCard":null
+      }
+   ]
 }

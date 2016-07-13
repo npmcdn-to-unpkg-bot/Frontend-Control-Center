@@ -55,7 +55,6 @@ export class BatchOrderUploadComponent implements OnInit {
           setTimeout(() => this.isDisabled = false, 3000);
           this.orders = orders;
         } else {
-          // TODO: display a dialog to show faulty entries
           this.faultyEntries = callback.data;
           this.message = callback.message;
           console.log(callback.data);
@@ -78,11 +77,6 @@ export class BatchOrderUploadComponent implements OnInit {
       }
     })
   }
-
-  // TODO: delete after complete the function
-  // get diagnose() {
-  //   return JSON.stringify(this.orders);
-  // }
 
   downloadTemplate() {
     this.fileService.downloadFileTemplate();

@@ -18,7 +18,8 @@ module.exports = function(defaults) {
       '@angular/**/*.+(js|js.map)',
       'xlsx/**/*.+(js|js.map)',
       'file-saver/**/*.+(js|js.map)',      
-      'bootstrap/**/*.+(js|js.map|css|less)'
+      'bootstrap/**/*.+(js|js.map|css|less)',
+      'font-awesome/**/*.*'
     ]
   });
 };

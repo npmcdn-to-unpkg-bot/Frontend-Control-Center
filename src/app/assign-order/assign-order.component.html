@@ -1,3 +1,59 @@
 <p>
   assign-order works!
 </p>
+
+<div class="row" *ngIf="!submitted">
+  <div class="list-group col-xs-12 col-md-4" id="orderList">
+    <a class="list-group-item" *ngFor="let order of orderList; let i = index">
+      <div class="checkbox">
+        <label [ngSwitch]="order.orderType">
+          <input type="checkbox" #checkbox value="" (change)="onCheckboxChange(order, checkbox.checked)" />
+          <h4 class="list-group-item-heading">{{order.orderId}}</h4>
+          <p class="list-group-item-text" *ngSwitchCase="0">Document</p>
+          <p class="list-group-item-text" *ngSwitchCase="1">Small Parcel</p>
+          <p class="list-group-item-text" *ngSwitchCase="2">Medium Parcel</p>
+          <p class="list-group-item-text" *ngSwitchCase="3">Large Parcel</p>
+          <p class="list-group-item-text"><strong>From: </strong>{{order.fromAddress.street}}</p>
+          <p class="list-group-item-text"><strong>To: </strong>{{order.toAddress.street}}</p>
+          <p class="list-group-item-text"><strong>{{order.released_to_driver ? "Released" : "Not Released"}}</strong></p>        
+      </label>
+      </div>
+    </a>
+  </div>
+  <div class="list-group col-xs-12 col-md-4" id="driverList">
+    <a class="list-group-item" *ngFor="let driver of driverList; let i = index">
+      <div class="radio">
+        <label>
+          <input type="radio" #radio name="driverRadios" value="selectedDriver" (change)="onRadioChange(driver, radio.checked)" />
+          <h4 class="list-group-item-heading">{{driver.name}}</h4>
+          <p class="list-group-item-text"><strong>Phone: </strong>{{driver.phone}}</p>
+          <p class="list-group-item-text"><strong>Vehicle No: </strong>{{driver.vehiceNumber}}</p>
+        </label>
+      </div>
+    </a>
+  </div>
+  <div class="col-xs-12 col-md-4" id="assignPanel">
+    <div class="center">
+      <button class="btn btn-primary center" (click)="addPairs()" [disabled]="(selectedOrders.length === 0) || (!selectedDriver)">ADD TO ASSIGNMENT LIST</button>
+      <div class="center output-table">
+        <table class="table table-sm table-hover">
+          <thead class="thead-inverse">
+            <tr>
+              <th>Driver</th>
+              <th>Order</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let pair of orderDriverPairs; let i = index">
+            <tr>
+              <td>{{pair.driver.name}}</td>
+              <td>{{pair.order.orderId}}</td>
+              <td><button class="btn-no-background fa fa-times-circle-o" style="color: red" (click)="removePair(pair)"></button></td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-warning center" *ngIf="(orderDriverPairs.length !== 0)" (click)="onSubmit()">ASSIGN</button>
+      </div>
+    </div>
+  </div>
+</div>

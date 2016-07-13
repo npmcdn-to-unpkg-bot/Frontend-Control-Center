@@ -1,0 +1,17 @@
+.output-table, .list-group{
+    max-height: 520px;
+    overflow: auto;
+}
+
+.center{
+    display: table;
+    margin: 0 auto;
+}
+
+.btn-no-background{
+    background:none;
+    border:none;
+    box-shadow:none;
+    margin: auto;
+    display: block;
+}
