@@ -1,18 +1,7 @@
-<h3>Orders:</h3>
-<table>
-  <tbody>
-  <tr>
-    <th>ID</th>
-    <th>From</th>
-    <th>To</th>
-    <th>On Date</th>  
-  </tr>
-  <tr *ngFor="let order of orders">
-    <td>{{order.orderId}}</td> 
-    <td>{{order.fromAddress.street}}</td> 
-    <td>{{order.toAddress.street}}</td> 
-    <td>{{order.created_at | date}}</td> 
-  </tr>
-  </tbody>
-</table>
-<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+<div class="ui-widget-header ui-helper-clearfix" style="padding:4px 10px;border-bottom: 0 none">
+    <i class="fa fa-search" style="float:left;margin:4px 4px 0 0"></i>
+    <input #gb type="text" pInputText size="50" style="float:left" placeholder="Global Filter">
+</div>
+<p-dataTable [value]="orders" [rows]="10" [paginator]="true" [globalFilter]="gb" sortMode="single">
+    <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [filter]="true" [sortable]="true"></p-column>    
+</p-dataTable>

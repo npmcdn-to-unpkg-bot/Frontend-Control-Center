@@ -1,7 +1,3 @@
-<h3>Drivers:</h3>
-<ul>
-  <li *ngFor="let driver of drivers">
-    {{driver.name}}
-  </li>
-</ul>
-<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+<p-dataTable [value]="drivers" class="autoWidth">
+    <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header"></p-column>
+</p-dataTable>

@@ -5,3 +5,7 @@ table, th, td {
 th, td {
     padding: 5px;
 }
+
+.ui-datatable table{
+    table-layout: auto !important;
+}

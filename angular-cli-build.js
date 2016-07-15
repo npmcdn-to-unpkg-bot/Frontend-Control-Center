@@ -19,7 +19,9 @@ module.exports = function(defaults) {
       'xlsx/**/*.+(js|js.map)',
       'file-saver/**/*.+(js|js.map)',      
       'bootstrap/**/*.+(js|js.map|css|less)',
-      'font-awesome/**/*.*'
+      'font-awesome/**/*.*',
+      'primeng/**/*.*',      
+      'primeui/**/*.*',                 
     ]
   });
 };

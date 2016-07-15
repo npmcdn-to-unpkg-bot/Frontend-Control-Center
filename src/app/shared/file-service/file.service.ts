@@ -11,7 +11,7 @@ export class FileService {
   private template: any;
 
   constructor() { }
-
+  /* Read File Methods */
   uploadFile(oEvent, callback) {
     //read the file
     var oFile = oEvent.target.files[0];
@@ -48,6 +48,7 @@ export class FileService {
     }
     // 1. Check if columns are the same as template and required fields are filled    
     for (let i in template) {
+      this.fillDefaultValue(template[i], data);
       temp = data.filter((item) => template[i].required && item[template[i].column] === undefined);
       if (temp.length > 0) {
         for (let j in temp) {
@@ -75,6 +76,14 @@ export class FileService {
     }
   }
 
+  private fillDefaultValue(templateItem, data: any[]) {
+    if (!templateItem.required && templateItem.default !== undefined) {
+      data.forEach(item => {
+        item[templateItem.column] = item[templateItem.column] === undefined ? templateItem.default : item[templateItem.column];
+      })
+    }
+  }
+
   private removeDuplicates(entries) {
     var uniqueEntries = [];
     $.each(entries, function (i, el) {
@@ -91,7 +100,6 @@ export class FileService {
       // ERROR: injector was not working properly
       // var orderObj = this.injector.get(Order);
       var orderObj = new Order(new FromAddress(new GeoLocation()), new ToAddress(new GeoLocation()), new Location())
-      console.log(orderObj);
       for (let j in template) {
         switch (template[j].dataType) {
           case "number":
@@ -122,13 +130,13 @@ export class FileService {
       { column: "SENDER_CONTACT", required: true, dataType: "string", name: "contactNumber" },
       { column: "RECIPIENT_NAME", required: true, dataType: "string", name: "recipientName" },
       { column: "RECIPIENT_CONTACT", required: true, dataType: "number", name: "recipientContact" },
-      { column: "REMARKS", required: false, dataType: "string", name: "comments" },
+      { column: "REMARKS", required: false, dataType: "string", name: "comments", default: "" },
       { column: "FROM_POSTAL", required: true, dataType: "FromAddress:number", name: "postal" },
-      { column: "FROM_ADDRESS", required: false, dataType: "FromAddress:string", name: "street" },
-      { column: "FROM_EXTRA", required: false, dataType: "FromAddress:string", name: "extra" },
+      { column: "FROM_ADDRESS", required: false, dataType: "FromAddress:string", name: "street", default: "" },
+      { column: "FROM_EXTRA", required: false, dataType: "FromAddress:string", name: "extra", default: "" },
       { column: "TO_POSTAL", required: true, dataType: "ToAddress:number", name: "postal" },
-      { column: "TO_ADDRESS", required: false, dataType: "ToAddress:string", name: "street" },
-      { column: "TO_EXTRA", required: false, dataType: "ToAddress:string", name: "extra" },
+      { column: "TO_ADDRESS", required: false, dataType: "ToAddress:string", name: "street", default: "" },
+      { column: "TO_EXTRA", required: false, dataType: "ToAddress:string", name: "extra", default: "" },
       { column: "FARE", required: true, dataType: "number", name: "amount" }
     ];
   }

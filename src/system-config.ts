@@ -8,11 +8,13 @@
 /** Map relative paths to URLs. */
 const map: any = {
   'angular2-google-maps': 'https://npmcdn.com/angular2-google-maps@0.12.0',
+  'primeng': 'vendor/primeng',
 };
 
 /** User packages configuration. */
 const packages: any = {
-  'angular2-google-maps/core': { main: 'index.js', defaultExtension: 'js' }
+  'angular2-google-maps/core': { main: 'index.js', defaultExtension: 'js' },
+  'primeng': { defaultExtension: 'js' }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,7 +30,7 @@ const barrels: string[] = [
   '@angular/router',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
-  '@angular/forms',  
+  '@angular/forms',
 
   // Thirdparty barrels.
   'rxjs',
