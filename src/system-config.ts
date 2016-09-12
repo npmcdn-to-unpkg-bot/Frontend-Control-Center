@@ -7,7 +7,7 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  'angular2-google-maps': 'https://npmcdn.com/angular2-google-maps@0.12.0',
+  'angular2-google-maps': 'https://unpkg.com/angular2-google-maps@0.12.0',
   'primeng': 'vendor/primeng',
 };
 
